@@ -15,3 +15,5 @@ After cloning and navigating to the src folder,
 For using as backend with the UI application, use the following command:
 
     -> java Notes -startServer
+    
+Note: Compile the the application first with the command:  javac Notes.java
