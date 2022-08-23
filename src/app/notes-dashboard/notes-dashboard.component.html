@@ -1,0 +1,60 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h1>Notes</h1>
+    <div class = "d-flex">
+      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success" (click)="clickAddNote()">Add Note</button>
+    </div>
+  </div>
+</nav>
+
+<table class="table mt-5">
+  <thead>
+
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let row of noteData">
+      <td>{{row}}</td>
+      <td>
+        <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="listContent(row)">List Content</button>
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Note</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="formNotes">
+          <div class="mb-3">
+            <label for="titleInput" class="form-label">Note Title</label>
+            <input type="text" formControlName="title" class="form-control" id="titleInput">
+          </div>
+          <div class="mb-3">
+            <label for="contentInput" class="form-label">Note Content</label>
+            <input type="text" formControlName="content" class="input-large form-control" id="contentInput">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button *ngIf="showAddButton" type="button" class="btn btn-primary" (click)="addNote()" data-bs-dismiss="modal">Add Note</button>
+      </div>
+    </div>
+  </div>
+</div>
