@@ -10,7 +10,7 @@ public class Notes {
         NoteService noteService = new NoteService();
 
         if (args.length == 0) {
-            System.out.println("Parameter list empty!");
+            System.out.println("Argument list empty!");
         }
 
         else if (args.length == 1) {
@@ -20,7 +20,7 @@ public class Notes {
                 ServerHandler handler = new ServerHandler();
                 handler.startServer();
             } else {
-                System.out.println("Parameter typo!");
+                System.out.println("Unknown argument!");
             }
         }
 
@@ -28,7 +28,7 @@ public class Notes {
             if (args[0].equals("-list")) {
                 noteService.listSpecificNoteToCommandLine(args[1]);
             } else {
-                System.out.println("Parameter typo!");
+                System.out.println("Unknown argument!");
             }
         }
 
@@ -36,7 +36,7 @@ public class Notes {
             if (args[0].equals( "-add")) {
                 noteService.createNote(args[1], args[2]);
             } else {
-                System.out.println("Parameter typo!");
+                System.out.println("Unknown argument!");
             }
         }
 

@@ -6,12 +6,8 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import helpers.NoteQueryHelper;
 import services.NoteService;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Map;
 
 public class ListNoteContentHandler implements HttpHandler {
@@ -22,9 +18,7 @@ public class ListNoteContentHandler implements HttpHandler {
             NoteQueryHelper helper = new NoteQueryHelper();
 
             Headers headers = httpExchange.getResponseHeaders();
-            headers.add("Access-Control-Allow-Headers","x-prototype-version,x-requested-with");
-            headers.add("Access-Control-Allow-Methods","GET,POST");
-            headers.add("Access-Control-Allow-Origin","*");
+            helper.addCorsHeaders(headers);
 
             Map<String,String> params = helper.queryToMap(httpExchange.getRequestURI().getQuery());
 

@@ -20,9 +20,7 @@ public class AddNoteHandler implements HttpHandler {
             NoteQueryHelper helper = new NoteQueryHelper();
 
             Headers headers = httpExchange.getResponseHeaders();
-            headers.add("Access-Control-Allow-Headers","x-prototype-version,x-requested-with");
-            headers.add("Access-Control-Allow-Methods","GET,POST");
-            headers.add("Access-Control-Allow-Origin","*");
+            helper.addCorsHeaders(headers);
 
             Map<String,String> params = helper.queryToMap(httpExchange.getRequestURI().getQuery());
 
