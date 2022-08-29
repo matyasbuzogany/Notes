@@ -1,5 +1,7 @@
 package services;
 
+import models.Note;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,8 +14,9 @@ public class NoteService {
 
     public void createNote(String title, String content) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(System.getProperty("user.dir")+"/notes/" + title +".txt"));
-            writer.write(content);
+            Note note = new Note(title, content);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(System.getProperty("user.dir")+"/notes/" + note.getContent() +".txt"));
+            writer.write(note.getContent());
             writer.close();
         } catch (IOException ioException) {
             System.out.println("Creation failed!");
