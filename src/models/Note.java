@@ -1,8 +1,8 @@
 package models;
 
 public class Note {
-    public String title;
-    public String content;
+    private String title;
+    private String content;
 
     public Note() {
     }
